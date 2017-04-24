@@ -2,10 +2,12 @@
 
 // Import a library to help create a component
 import React from 'react';
-import { Text, AppRegistry } from 'react-native';
+import { AppRegistry } from 'react-native';
+import Header from './src/components/header';
+
 
 // Create a component
-const App = () => <Text>Some Text</Text>;
+const App = () => <Header />;
 
-// Render it to the device
+// Render it to the device. This is the ROOT component. Only root c
 AppRegistry.registerComponent('albums', () => App);
