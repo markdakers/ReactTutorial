@@ -9,7 +9,7 @@ import Header from './src/components/header';
 
 
 // Create a component
-const App = () => <Header />;
+const App = () => <Header headerText={'Albums'} />;
 
 // Render it to the device. This is the ROOT component. Only one root component can be registered.
 AppRegistry.registerComponent('albums', () => App);
