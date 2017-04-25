@@ -9,6 +9,7 @@
         // `.jsx` extension cannot be used with React Native
         // https://github.com/airbnb/javascript/issues/982
         "react/jsx-filename-extension": ["error", { "extensions": [".js", ".jsx"] }],
-        "react/prefer-stateless-function": 0
+        "react/prefer-stateless-function": 0,
+        "max-len": [2, 100, 4, {"ignoreComments": true,"ignoreUrls": true}]
     }
 }
