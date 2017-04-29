@@ -51522,9 +51522,13 @@ var _react2 = babelHelpers.interopRequireDefault(_react);
 
 var _reactNative = require(45            ); // 45 = react-native
 
+var _Card = require(447     ); // 447 = ./Card
+
+var _Card2 = babelHelpers.interopRequireDefault(_Card);
+
 var AlbumDetail = function AlbumDetail(props) {
     return _react2.default.createElement(
-        _reactNative.View,
+        _Card2.default,
         null,
         _react2.default.createElement(
             _reactNative.Text,
@@ -51536,6 +51540,43 @@ var AlbumDetail = function AlbumDetail(props) {
 
 exports.default = AlbumDetail;
 }, 446, null, "albums/src/components/AlbumDetail.js");
+__d(/* albums/src/components/Card.js */function(global, require, module, exports) {Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _react = require(12     ); // 12 = react
+
+var _react2 = babelHelpers.interopRequireDefault(_react);
+
+var _reactNative = require(45            ); // 45 = react-native
+
+var styles = {
+    containerStyle: {
+        borderWidth: 1,
+        borderRadius: 2,
+        borderColor: '#ddd',
+        borderBottomWidth: 0,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.1,
+        shadowRadius: 2,
+        elevation: 1,
+        marginLeft: 5,
+        marginRight: 5,
+        marginTop: 10
+    }
+};
+
+var Card = function Card(props) {
+    return _react2.default.createElement(
+        _reactNative.View,
+        { style: styles.containerStyle },
+        props.children
+    );
+};
+
+exports.default = Card;
+}, 447, null, "albums/src/components/Card.js");
 ;require(90);
 ;require(0);
 //# sourceMappingURL=index.android.map
