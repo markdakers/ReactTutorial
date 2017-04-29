@@ -1,5 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
+import PropTypes from 'prop-types';
 
 const styles = {
     containerStyle: {
@@ -25,5 +26,11 @@ const Card = (props) => {
         </View>
     );
 };
+
+Card.propTypes = { children: PropTypes.oneOfType([
+    PropTypes.arrayOf(React.PropTypes.node),
+    PropTypes.node]),
+};
+Card.defaultProps = { children: [] };
 
 export default Card;

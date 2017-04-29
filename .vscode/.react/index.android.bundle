@@ -51522,20 +51522,36 @@ var _react2 = babelHelpers.interopRequireDefault(_react);
 
 var _reactNative = require(45            ); // 45 = react-native
 
+var _propTypes = require(415         ); // 415 = prop-types
+
+var _propTypes2 = babelHelpers.interopRequireDefault(_propTypes);
+
 var _Card = require(447     ); // 447 = ./Card
 
 var _Card2 = babelHelpers.interopRequireDefault(_Card);
+
+var _CardSection = require(448            ); // 448 = ./CardSection
+
+var _CardSection2 = babelHelpers.interopRequireDefault(_CardSection);
 
 var AlbumDetail = function AlbumDetail(props) {
     return _react2.default.createElement(
         _Card2.default,
         null,
         _react2.default.createElement(
-            _reactNative.Text,
+            _CardSection2.default,
             null,
-            props.album.title
+            _react2.default.createElement(
+                _reactNative.Text,
+                null,
+                props.album.title
+            )
         )
     );
+};
+
+AlbumDetail.propTypes = { album: _propTypes2.default.shape({
+        title: _propTypes2.default.string.isRequired }).isRequired
 };
 
 exports.default = AlbumDetail;
@@ -51549,6 +51565,10 @@ var _react = require(12     ); // 12 = react
 var _react2 = babelHelpers.interopRequireDefault(_react);
 
 var _reactNative = require(45            ); // 45 = react-native
+
+var _propTypes = require(415         ); // 415 = prop-types
+
+var _propTypes2 = babelHelpers.interopRequireDefault(_propTypes);
 
 var styles = {
     containerStyle: {
@@ -51575,8 +51595,51 @@ var Card = function Card(props) {
     );
 };
 
+Card.propTypes = { children: _propTypes2.default.oneOfType([_propTypes2.default.arrayOf(_react2.default.PropTypes.node), _propTypes2.default.node])
+};
+Card.defaultProps = { children: [] };
+
 exports.default = Card;
 }, 447, null, "albums/src/components/Card.js");
+__d(/* albums/src/components/CardSection.js */function(global, require, module, exports) {Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _react = require(12     ); // 12 = react
+
+var _react2 = babelHelpers.interopRequireDefault(_react);
+
+var _reactNative = require(45            ); // 45 = react-native
+
+var _propTypes = require(415         ); // 415 = prop-types
+
+var _propTypes2 = babelHelpers.interopRequireDefault(_propTypes);
+
+var styles = {
+    ContainerStyle: {
+        borderBottomWidth: 1,
+        padding: 5,
+        backgroundColor: '#fff',
+        justifyContent: 'flex-start',
+        flexDirection: 'row',
+        borderColor: '#ddd',
+        position: 'relative'
+    }
+};
+
+var CardSection = function CardSection(props) {
+    return _react2.default.createElement(
+        _reactNative.View,
+        { style: styles.ContainerStyle },
+        props.children
+    );
+};
+
+CardSection.propTypes = { children: _propTypes2.default.node };
+CardSection.defaultProps = { children: [] };
+
+exports.default = CardSection;
+}, 448, null, "albums/src/components/CardSection.js");
 ;require(90);
 ;require(0);
 //# sourceMappingURL=index.android.map

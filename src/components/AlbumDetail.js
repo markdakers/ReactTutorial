@@ -1,16 +1,22 @@
 import React from 'react';
 import { Text } from 'react-native';
+import PropTypes from 'prop-types';
 import Card from './Card';
-//import PropTypes from 'prop-types';
+import CardSection from './CardSection';
 
 const AlbumDetail = (props) => {
     return (
         <Card>
-            <Text>{props.album.title}</Text>
+            <CardSection>
+                <Text>{props.album.title}</Text>
+            </CardSection>
         </Card>
     );
 };
 
-//AlbumDetail.propTypes = { album: PropTypes.album.required };
+//React.PropTypes.arrayOf
+AlbumDetail.propTypes = { album: PropTypes.shape({
+    title: PropTypes.string.isRequired }).isRequired,
+};
 
 export default AlbumDetail;
