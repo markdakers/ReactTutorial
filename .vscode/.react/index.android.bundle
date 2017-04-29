@@ -51534,7 +51534,24 @@ var _CardSection = require(448            ); // 448 = ./CardSection
 
 var _CardSection2 = babelHelpers.interopRequireDefault(_CardSection);
 
-var AlbumDetail = function AlbumDetail(props) {
+var styles = {
+    headerContentStyle: {
+        flexDirection: 'column',
+        justifyContent: 'space-around'
+    },
+    thumbnailStyle: {
+        height: 50,
+        width: 50
+    }
+};
+
+var AlbumDetail = function AlbumDetail(_ref) {
+    var album = _ref.album;
+    var title = album.title,
+        artist = album.artist,
+        thumbnail_image = album.thumbnail_image;
+
+
     return _react2.default.createElement(
         _Card2.default,
         null,
@@ -51542,16 +51559,34 @@ var AlbumDetail = function AlbumDetail(props) {
             _CardSection2.default,
             null,
             _react2.default.createElement(
-                _reactNative.Text,
+                _reactNative.View,
                 null,
-                props.album.title
+                _react2.default.createElement(_reactNative.Image, { style: styles.thumbnailStyle, source: { uri: thumbnail_image } })
+            ),
+            _react2.default.createElement(
+                _reactNative.View,
+                { style: styles.headerContentStyle },
+                _react2.default.createElement(
+                    _reactNative.Text,
+                    null,
+                    title
+                ),
+                _react2.default.createElement(
+                    _reactNative.Text,
+                    null,
+                    artist
+                )
             )
         )
     );
 };
 
-AlbumDetail.propTypes = { album: _propTypes2.default.shape({
-        title: _propTypes2.default.string.isRequired }).isRequired
+AlbumDetail.propTypes = {
+    album: _propTypes2.default.shape({
+        title: _propTypes2.default.string.isRequired,
+        artist: _propTypes2.default.string.isRequired,
+        thumbnail_image: _propTypes2.default.string.isRequired
+    }).isRequired
 };
 
 exports.default = AlbumDetail;
