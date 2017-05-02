@@ -1246,7 +1246,7 @@ var _AlbumList2 = babelHelpers.interopRequireDefault(_AlbumList);
 var App = function App() {
     return _react2.default.createElement(
         _reactNative.View,
-        null,
+        { style: { flex: 1 } },
         _react2.default.createElement(_header2.default, { headerText: 'Albums' }),
         _react2.default.createElement(_AlbumList2.default, null)
     );
@@ -50577,7 +50577,7 @@ var AlbumList = function (_Component) {
             console.log(this.state);
 
             return _react2.default.createElement(
-                _reactNative.View,
+                _reactNative.ScrollView,
                 null,
                 this.renderAlbums()
             );
@@ -51534,14 +51534,32 @@ var _CardSection = require(448            ); // 448 = ./CardSection
 
 var _CardSection2 = babelHelpers.interopRequireDefault(_CardSection);
 
+var _Button = require(449       ); // 449 = ./Button
+
+var _Button2 = babelHelpers.interopRequireDefault(_Button);
+
 var styles = {
     headerContentStyle: {
         flexDirection: 'column',
         justifyContent: 'space-around'
     },
+    headerTextStyle: {
+        fontSize: 18
+    },
     thumbnailStyle: {
         height: 50,
         width: 50
+    },
+    thumbnailContainerStyle: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginLeft: 10,
+        marginRight: 10
+    },
+    albumImageStyle: {
+        height: 300,
+        flex: 1,
+        width: null
     }
 };
 
@@ -51549,7 +51567,9 @@ var AlbumDetail = function AlbumDetail(_ref) {
     var album = _ref.album;
     var title = album.title,
         artist = album.artist,
-        thumbnail_image = album.thumbnail_image;
+        thumbnail_image = album.thumbnail_image,
+        image = album.image,
+        url = album.url;
 
 
     return _react2.default.createElement(
@@ -51560,7 +51580,7 @@ var AlbumDetail = function AlbumDetail(_ref) {
             null,
             _react2.default.createElement(
                 _reactNative.View,
-                null,
+                { style: styles.thumbnailContainerStyle },
                 _react2.default.createElement(_reactNative.Image, { style: styles.thumbnailStyle, source: { uri: thumbnail_image } })
             ),
             _react2.default.createElement(
@@ -51568,13 +51588,33 @@ var AlbumDetail = function AlbumDetail(_ref) {
                 { style: styles.headerContentStyle },
                 _react2.default.createElement(
                     _reactNative.Text,
-                    null,
+                    { style: styles.headerTextStyle },
                     title
                 ),
                 _react2.default.createElement(
                     _reactNative.Text,
                     null,
                     artist
+                )
+            )
+        ),
+        _react2.default.createElement(
+            _CardSection2.default,
+            null,
+            _react2.default.createElement(_reactNative.Image, { style: styles.albumImageStyle, source: { uri: image } })
+        ),
+        _react2.default.createElement(
+            _CardSection2.default,
+            null,
+            _react2.default.createElement(
+                _Button2.default,
+                { onPress: function onPress() {
+                        return _reactNative.Linking.openURL(url);
+                    } },
+                _react2.default.createElement(
+                    _reactNative.Text,
+                    null,
+                    'Buy Now'
                 )
             )
         )
@@ -51585,7 +51625,8 @@ AlbumDetail.propTypes = {
     album: _propTypes2.default.shape({
         title: _propTypes2.default.string.isRequired,
         artist: _propTypes2.default.string.isRequired,
-        thumbnail_image: _propTypes2.default.string.isRequired
+        thumbnail_image: _propTypes2.default.string.isRequired,
+        url: _propTypes2.default.string.isRequired
     }).isRequired
 };
 
@@ -51675,6 +51716,68 @@ CardSection.defaultProps = { children: [] };
 
 exports.default = CardSection;
 }, 448, null, "albums/src/components/CardSection.js");
+__d(/* albums/src/components/Button.js */function(global, require, module, exports) {Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _react = require(12     ); // 12 = react
+
+var _react2 = babelHelpers.interopRequireDefault(_react);
+
+var _reactNative = require(45            ); // 45 = react-native
+
+var _propTypes = require(415         ); // 415 = prop-types
+
+var styles = {
+    buttonStyle: {
+        flex: 1,
+        alignSelf: 'stretch',
+        backgroundColor: '#fff',
+        borderRadius: 5,
+        borderWidth: 1,
+        borderColor: '#007aff',
+        marginLeft: 5,
+        marginRight: 5
+    },
+    buttonTextStyle: {
+        alignSelf: 'center',
+        color: '#007aff',
+        fontSize: 16,
+        fontWeight: '600',
+        paddingTop: 10,
+        paddingBottom: 10
+    }
+};
+
+var Button = function Button(_ref) {
+    var onPress = _ref.onPress,
+        children = _ref.children;
+    var buttonStyle = styles.buttonStyle,
+        buttonTextStyle = styles.buttonTextStyle;
+
+    return _react2.default.createElement(
+        _reactNative.TouchableOpacity,
+        { onPress: onPress, style: buttonStyle },
+        _react2.default.createElement(
+            _reactNative.Text,
+            { style: buttonTextStyle },
+            children
+        )
+    );
+};
+
+Button.propTypes = {
+    onPress: _propTypes.PropTypes.func,
+    children: _propTypes.PropTypes.oneOfType([_propTypes.PropTypes.arrayOf(_react2.default.PropTypes.node), _propTypes.PropTypes.node])
+};
+
+Button.defaultProps = {
+    onPress: function onPress() {},
+    children: []
+};
+
+exports.default = Button;
+}, 449, null, "albums/src/components/Button.js");
 ;require(90);
 ;require(0);
 //# sourceMappingURL=index.android.map
